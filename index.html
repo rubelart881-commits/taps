@@ -93,12 +93,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
+        
         /* --- AUTHENTICATION VIEW --- */
         #auth-view {
             display: flex;
@@ -203,6 +198,13 @@
             gap: 32px;
             margin-bottom: 32px;
         }
+        
+        .three-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
 
         .section-title {
             font-size: 24px;
@@ -211,18 +213,16 @@
             color: #e0e0e0;
         }
 
-        /* --- DASHBOARD SECTION --- */
+        /* --- DASHBOARD & LOGS --- */
         .study-form {
             display: grid;
             gap: 16px;
         }
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
         }
-
         .textarea-field {
             width: 100%;
             padding: 12px 16px;
@@ -236,33 +236,19 @@
             min-height: 100px;
             transition: all 0.3s ease;
         }
-
         .textarea-field:focus {
             outline: none;
             border-color: #667eea;
             background: rgba(255, 255, 255, 0.15);
         }
-        
-        /* --- STUDY LOGS --- */
         .logs-container {
             max-height: 400px;
             overflow-y: auto;
             padding-right: 8px;
         }
-
-        .logs-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .logs-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-        }
-
-        .logs-container::-webkit-scrollbar-thumb {
-            background: rgba(102, 126, 234, 0.6);
-            border-radius: 3px;
-        }
+        .logs-container::-webkit-scrollbar { width: 6px; }
+        .logs-container::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+        .logs-container::-webkit-scrollbar-thumb { background: rgba(102, 126, 234, 0.6); border-radius: 3px; }
 
         .log-item {
             background: rgba(255, 255, 255, 0.05);
@@ -272,444 +258,90 @@
             border-left: 4px solid #667eea;
             transition: all 0.3s ease;
         }
-
-        .log-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(4px);
-        }
-
-        .log-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .log-subject {
-            font-weight: 600;
-            color: #667eea;
-            font-size: 16px;
-        }
-
-        .log-duration {
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            padding: 4px 8px;
-            border-radius: 12px;
+        .log-item-author {
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
+            color: #f093fb;
+            margin-bottom: 6px;
         }
-
-        .log-chapter {
-            color: rgba(224, 224, 224, 0.8);
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .log-note {
-            color: rgba(224, 224, 224, 0.9);
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .log-timestamp {
-            color: rgba(224, 224, 224, 0.5);
-            font-size: 12px;
-            margin-top: 8px;
-        }
+        .log-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .log-subject { font-weight: 600; color: #667eea; font-size: 16px; }
+        .log-duration { background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .log-chapter { color: rgba(224, 224, 224, 0.8); font-size: 14px; margin-bottom: 8px; }
+        .log-note { color: rgba(224, 224, 224, 0.9); font-size: 14px; line-height: 1.5; }
+        .log-timestamp { color: rgba(224, 224, 224, 0.5); font-size: 12px; margin-top: 8px; }
 
         /* --- GROUPS SECTION --- */
-        .user-id-display {
-            background: rgba(102, 126, 234, 0.1);
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .user-id-display { background: rgba(102, 126, 234, 0.1); border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 20px; text-align: center; }
+        .user-id-label { font-size: 12px; color: rgba(224, 224, 224, 0.7); margin-bottom: 4px; }
+        .user-id-value { font-family: 'Courier New', monospace; font-size: 14px; color: #667eea; font-weight: 600; word-break: break-all; }
+        .invite-form { display: flex; gap: 12px; margin-bottom: 20px; }
+        .invite-form .input-field { margin-bottom: 0; flex: 1; }
+        .groups-list { max-height: 300px; overflow-y: auto; }
+        .group-item { background: rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .group-item:hover { background: rgba(255, 255, 255, 0.1); transform: translateX(4px); }
+        .group-name { font-weight: 600; color: #e0e0e0; margin-bottom: 4px; }
+        .group-members { font-size: 12px; color: rgba(224, 224, 224, 0.6); }
 
-        .user-id-label {
-            font-size: 12px;
-            color: rgba(224, 224, 224, 0.7);
-            margin-bottom: 4px;
-        }
+        /* --- OVERLAY VIEWS (CHAT & GROUP LOGS) --- */
+        .overlay-view { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%); z-index: 1000; display: flex; flex-direction: column; }
+        .overlay-header { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(20px); padding: 16px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; }
+        .overlay-title { font-size: 20px; font-weight: 700; color: #e0e0e0; }
+        .overlay-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
 
-        .user-id-value {
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #667eea;
-            font-weight: 600;
-            word-break: break-all;
-        }
-
-        .invite-form {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .invite-form .input-field {
-            margin-bottom: 0;
-            flex: 1;
-        }
-
-        .groups-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .group-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .group-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(4px);
-        }
-
-        .group-name {
-            font-weight: 600;
-            color: #e0e0e0;
-            margin-bottom: 4px;
-        }
-
-        .group-members {
-            font-size: 12px;
-            color: rgba(224, 224, 224, 0.6);
-        }
-
-        /* --- CHAT VIEW --- */
-        #chat-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chat-header {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(20px);
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #e0e0e0;
-        }
-        
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            max-width: 70%;
-            padding: 12px 16px;
-            border-radius: 16px;
-            word-wrap: break-word;
-            position: relative;
-        }
-
-        .message.own {
-            align-self: flex-end;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .message.other {
-            align-self: flex-start;
-            background: rgba(255, 255, 255, 0.1);
-            color: #e0e0e0;
-        }
-
-        .message-sender {
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            opacity: 0.8;
-        }
-
-        .message-content {
-            font-size: 14px;
-            line-height: 1.4;
-        }
-
-        .message-time {
-            font-size: 11px;
-            opacity: 0.6;
-            margin-top: 4px;
-        }
-
-        .message-delete {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            display: none;
-        }
-
-        .message.own:hover .message-delete {
-            display: block;
-        }
-
-        .chat-input-container {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-input-form {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .chat-input {
-            flex: 1;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            color: #e0e0e0;
-            font-size: 14px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        .chat-input:focus {
-            border-color: #667eea;
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .chat-send-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .chat-send-btn:hover {
-            transform: scale(1.1);
-        }
+        /* --- CHAT VIEW SPECIFIC --- */
+        .message { max-width: 70%; padding: 12px 16px; border-radius: 16px; word-wrap: break-word; position: relative; }
+        .message.own { align-self: flex-end; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .message.other { align-self: flex-start; background: rgba(255, 255, 255, 0.1); color: #e0e0e0; }
+        .message-sender { font-size: 12px; font-weight: 600; margin-bottom: 4px; opacity: 0.8; }
+        .message-content { font-size: 14px; line-height: 1.4; }
+        .message-time { font-size: 11px; opacity: 0.6; margin-top: 4px; }
+        .message-delete { position: absolute; top: -8px; right: -8px; background: #ff6b6b; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; cursor: pointer; display: none; }
+        .message.own:hover .message-delete { display: block; }
+        .chat-input-container { padding: 20px; background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .chat-input-form { display: flex; gap: 12px; align-items: center; }
+        .chat-input { flex: 1; padding: 12px 16px; background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.2); border-radius: 24px; color: #e0e0e0; font-size: 14px; outline: none; transition: all 0.3s ease; }
+        .chat-input:focus { border-color: #667eea; background: rgba(255, 255, 255, 0.15); }
+        .chat-send-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+        .chat-send-btn:hover { transform: scale(1.1); }
 
         /* --- DEVELOPER CREDIT --- */
-        .developer-credit {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 50px;
-            padding: 8px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 1001;
-        }
-
-        .developer-credit:hover {
-            transform: scale(1.05);
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        .developer-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .developer-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #e0e0e0;
-        }
-
-        .developer-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1002;
-        }
-
-        .developer-modal-content {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 32px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .developer-modal-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 32px;
-            margin: 0 auto 16px;
-        }
-
-        .developer-modal-name {
-            font-size: 24px;
-            font-weight: 700;
-            color: #e0e0e0;
-            margin-bottom: 8px;
-        }
-
-        .developer-modal-title {
-            font-size: 16px;
-            color: rgba(224, 224, 224, 0.7);
-            margin-bottom: 16px;
-        }
-
-        .developer-modal-description {
-            font-size: 14px;
-            color: rgba(224, 224, 224, 0.8);
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
+        .developer-credit { position: fixed; bottom: 20px; right: 20px; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); border-radius: 50px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2); z-index: 1001; }
+        .developer-credit:hover { transform: scale(1.05); background: rgba(0, 0, 0, 0.9); }
+        .developer-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 14px; }
+        .developer-name { font-size: 14px; font-weight: 600; color: #e0e0e0; }
+        
+        /* --- DEVELOPER MODAL --- */
+        .developer-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 1002; }
+        .developer-modal-content { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(20px); border-radius: 20px; padding: 32px; max-width: 400px; width: 90%; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); }
+        .developer-modal-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 32px; margin: 0 auto 16px; }
+        .developer-modal-name { font-size: 24px; font-weight: 700; color: #e0e0e0; margin-bottom: 8px; }
+        .developer-modal-title { font-size: 16px; color: rgba(224, 224, 224, 0.7); margin-bottom: 16px; }
+        .developer-modal-description { font-size: 14px; color: rgba(224, 224, 224, 0.8); line-height: 1.6; margin-bottom: 24px; }
 
         /* --- ERROR MESSAGES --- */
-        .error-message {
-            background: rgba(255, 107, 107, 0.1);
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            color: #ff6b6b;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
-
-        .success-message {
-            background: rgba(76, 175, 80, 0.1);
-            border: 1px solid rgba(76, 175, 80, 0.3);
-            color: #4caf50;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
+        .error-message { background: rgba(255, 107, 107, 0.1); border: 1px solid rgba(255, 107, 107, 0.3); color: #ff6b6b; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
+        .success-message { background: rgba(76, 175, 80, 0.1); border: 1px solid rgba(76, 175, 80, 0.3); color: #4caf50; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px; }
 
         /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .three-column-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .auth-buttons {
-                flex-direction: column;
-            }
-
-            .navbar-brand {
-                font-size: 24px;
-            }
-
-            .invite-form {
-                flex-direction: column;
-            }
-
-            .chat-actions {
-                flex-wrap: wrap;
-            }
-
-            .message {
-                max-width: 85%;
-            }
-
-            .developer-credit {
-                bottom: 10px;
-                right: 10px;
-                padding: 6px 12px;
-            }
-
-            .developer-avatar {
-                width: 28px;
-                height: 28px;
-                font-size: 12px;
-            }
-
-            .developer-name {
-                font-size: 12px;
-            }
+            .content-grid, .three-column-grid { grid-template-columns: 1fr; gap: 24px; }
+            .form-row { grid-template-columns: 1fr; }
+            .auth-buttons { flex-direction: column; }
+            .navbar-brand { font-size: 24px; }
+            .invite-form { flex-direction: column; }
+            .message { max-width: 85%; }
+            .developer-credit { bottom: 10px; right: 10px; padding: 6px 12px; }
+            .developer-avatar { width: 28px; height: 28px; font-size: 12px; }
+            .developer-name { font-size: 12px; }
         }
 
         /* --- LOADING SPINNER --- */
-        .loading-spinner {
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .loading-spinner { border: 3px solid rgba(255, 255, 255, 0.1); border-top: 3px solid #667eea; border-radius: 50%; width: 24px; height: 24px; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -719,14 +351,11 @@
             <div class="auth-container">
                 <h1 class="auth-title">TAPS</h1>
                 <p class="auth-subtitle">Student Study & Collaboration Platform</p>
-                
                 <div id="auth-error" class="error-message hidden"></div>
                 <div id="auth-success" class="success-message hidden"></div>
-                
                 <form id="auth-form">
                     <input type="email" id="email" class="input-field" placeholder="Email Address" required>
                     <input type="password" id="password" class="input-field" placeholder="Password" required>
-                    
                     <div class="auth-buttons">
                         <button type="button" id="login-btn" class="btn">Login</button>
                         <button type="button" id="register-btn" class="btn btn-secondary">Register</button>
@@ -737,7 +366,6 @@
 
         <!-- Main Application View -->
         <div id="main-view" class="hidden">
-            <!-- Navigation Bar -->
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-content">
@@ -750,84 +378,87 @@
                 </div>
             </nav>
 
-            <!-- Main Content -->
             <main class="main-content">
                 <div class="container">
-                    <div class="content-grid">
+                    <div class="three-column-grid">
                         <!-- Study Dashboard -->
                         <div class="card">
                             <h2 class="section-title">Study Dashboard</h2>
-                            
                             <div id="dashboard-error" class="error-message hidden"></div>
                             <div id="dashboard-success" class="success-message hidden"></div>
-                            
                             <form id="study-form" class="study-form">
                                 <div class="form-row">
                                     <input type="text" id="subject" class="input-field" placeholder="Subject" required>
                                     <input type="text" id="chapter" class="input-field" placeholder="Chapter" required>
                                 </div>
-                                
                                 <input type="number" id="duration" class="input-field" placeholder="Duration (minutes)" min="1" required>
-                                
                                 <textarea id="notes" class="textarea-field" placeholder="Study notes..."></textarea>
-                                
                                 <button type="submit" class="btn">Save Study Log</button>
                             </form>
                         </div>
 
-                        <!-- Groups Section -->
+                        <!-- Groups & Collaboration -->
                         <div class="card">
-                            <h2 class="section-title">Groups & Collaboration</h2>
-                            
+                            <h2 class="section-title">Group Chat</h2>
                             <div class="user-id-display">
                                 <div class="user-id-label">Your Unique ID</div>
                                 <div class="user-id-value" id="user-uid">Loading...</div>
                             </div>
-                            
                             <div id="groups-error" class="error-message hidden"></div>
                             <div id="groups-success" class="success-message hidden"></div>
-                            
-                            <button id="create-group-btn" class="btn" style="width: 100%; margin-bottom: 16px;">Create New Group</button>
-                            
-                            <div class="invite-form">
+                            <button id="create-group-btn" class="btn" style="width: 100%; margin-bottom: 16px;">Create New Chat Group</button>
+                            <form id="invite-form" class="invite-form">
                                 <input type="text" id="invite-uid" class="input-field" placeholder="Friend's UID">
-                                <button type="button" id="invite-btn" class="btn">Invite</button>
-                            </div>
-                            
-                            <div class="groups-list" id="groups-list">
-                                <!-- Groups will be populated here -->
-                            </div>
+                                <button type="submit" class="btn">Invite</button>
+                            </form>
+                            <div class="groups-list" id="groups-list"></div>
+                        </div>
+
+                        <!-- NEW: Group Logs -->
+                        <div class="card">
+                            <h2 class="section-title">Group Logs</h2>
+                            <div id="group-logs-error" class="error-message hidden"></div>
+                            <div id="group-logs-success" class="success-message hidden"></div>
+                            <button id="create-group-log-btn" class="btn" style="width: 100%; margin-bottom: 16px;">Create New Log Group</button>
+                             <form id="invite-log-form" class="invite-form">
+                                <input type="text" id="invite-log-uid" class="input-field" placeholder="Friend's UID">
+                                <button type="submit" class="btn">Invite to Log Group</button>
+                            </form>
+                            <div class="groups-list" id="group-logs-list"></div>
                         </div>
                     </div>
 
-                    <!-- Study Logs Section -->
+                    <!-- Study History Section -->
                     <div class="card">
-                        <h2 class="section-title">Study History</h2>
-                        <div class="logs-container" id="logs-container">
-                            <!-- Study logs will be populated here -->
-                        </div>
+                        <h2 class="section-title">My Study History</h2>
+                        <div class="logs-container" id="logs-container"></div>
                     </div>
                 </div>
             </main>
         </div>
 
         <!-- Chat View -->
-        <div id="chat-view" class="hidden">
-            <div class="chat-header">
-                <div class="chat-title" id="chat-group-name">Group Chat</div>
+        <div id="chat-view" class="overlay-view hidden">
+            <div class="overlay-header">
+                <div class="overlay-title" id="chat-group-name">Group Chat</div>
                 <button id="close-chat-btn" class="btn btn-danger">✕ Close</button>
             </div>
-            
-            <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be populated here -->
-            </div>
-            
+            <div class="overlay-messages" id="chat-messages"></div>
             <div class="chat-input-container">
                 <form id="chat-form" class="chat-input-form">
                     <input type="text" id="chat-input" class="chat-input" placeholder="Type a message..." required>
                     <button type="submit" class="chat-send-btn">➤</button>
                 </form>
             </div>
+        </div>
+
+        <!-- NEW: Group Log View -->
+        <div id="group-log-view" class="overlay-view hidden">
+            <div class="overlay-header">
+                <div class="overlay-title" id="group-log-name">Group Study Logs</div>
+                <button id="close-group-log-btn" class="btn btn-danger">✕ Close</button>
+            </div>
+            <div class="overlay-messages logs-container" id="group-log-messages"></div>
         </div>
 
         <!-- Developer Credit -->
@@ -856,12 +487,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
 
     <script>
         // --- FIREBASE CONFIGURATION ---
-        const firebaseConfig = {
-           apiKey: "AIzaSyAe4GiadLMgfKGMK24xL2aWkTkS-NVIDzs",
+        apiKey: "AIzaSyAe4GiadLMgfKGMK24xL2aWkTkS-NVIDzs",
   authDomain: "taps-final.firebaseapp.com",
   projectId: "taps-final",
   storageBucket: "taps-final.firebasestorage.app",
@@ -874,19 +503,20 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-        // const storage = firebase.storage(); // স্টোরেজ প্রয়োজন নেই
 
         // --- GLOBAL VARIABLES ---
         let currentUser = null;
-        let currentGroupId = null;
+        let currentChatGroupId = null;
+        let currentLogGroupId = null;
         let chatUnsubscribe = null;
+        let groupLogUnsubscribe = null;
 
         // --- DOM ELEMENTS ---
         const authView = document.getElementById('auth-view');
         const mainView = document.getElementById('main-view');
         const chatView = document.getElementById('chat-view');
+        const groupLogView = document.getElementById('group-log-view');
 
-        // Auth elements
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
         const loginBtn = document.getElementById('login-btn');
@@ -894,29 +524,33 @@
         const logoutBtn = document.getElementById('logout-btn');
         const userDisplayName = document.getElementById('user-display-name');
         const userUid = document.getElementById('user-uid');
-
-        // Study form elements
+        
         const studyForm = document.getElementById('study-form');
         const subjectInput = document.getElementById('subject');
         const chapterInput = document.getElementById('chapter');
         const durationInput = document.getElementById('duration');
         const notesInput = document.getElementById('notes');
         const logsContainer = document.getElementById('logs-container');
-
-        // Groups elements
+        
         const createGroupBtn = document.getElementById('create-group-btn');
+        const inviteForm = document.getElementById('invite-form');
         const inviteUidInput = document.getElementById('invite-uid');
-        const inviteBtn = document.getElementById('invite-btn');
         const groupsList = document.getElementById('groups-list');
-
-        // Chat elements
+        
         const chatGroupName = document.getElementById('chat-group-name');
         const chatMessages = document.getElementById('chat-messages');
         const chatForm = document.getElementById('chat-form');
         const chatInput = document.getElementById('chat-input');
         const closeChatBtn = document.getElementById('close-chat-btn');
+        
+        const createGroupLogBtn = document.getElementById('create-group-log-btn');
+        const inviteLogForm = document.getElementById('invite-log-form');
+        const inviteLogUidInput = document.getElementById('invite-log-uid');
+        const groupLogsList = document.getElementById('group-logs-list');
+        const groupLogName = document.getElementById('group-log-name');
+        const groupLogMessages = document.getElementById('group-log-messages');
+        const closeGroupLogBtn = document.getElementById('close-group-log-btn');
 
-        // Developer credit elements
         const developerCredit = document.getElementById('developer-credit');
         const developerModal = document.getElementById('developer-modal');
         const closeDeveloperModal = document.getElementById('close-developer-modal');
@@ -926,60 +560,40 @@
             const errorElement = document.getElementById(elementId);
             errorElement.textContent = message;
             errorElement.classList.remove('hidden');
-            setTimeout(() => {
-                errorElement.classList.add('hidden');
-            }, 5000);
+            setTimeout(() => errorElement.classList.add('hidden'), 5000);
         }
 
         function showSuccess(elementId, message) {
             const successElement = document.getElementById(elementId);
             successElement.textContent = message;
             successElement.classList.remove('hidden');
-            setTimeout(() => {
-                successElement.classList.add('hidden');
-            }, 3000);
+            setTimeout(() => successElement.classList.add('hidden'), 3000);
         }
 
         function formatTimestamp(timestamp) {
             if (!timestamp) return '';
-            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-            return date.toLocaleString();
+            return timestamp.toDate().toLocaleString();
         }
-
-        function generateGroupName() {
-            const adjectives = ['Study', 'Learning', 'Academic', 'Smart', 'Brilliant', 'Focus', 'Knowledge'];
-            const nouns = ['Group', 'Team', 'Circle', 'Squad', 'Crew', 'Club', 'Society'];
+        
+        function generateGroupName(type = 'Group') {
+            const adjectives = ['Study', 'Learning', 'Academic', 'Smart', 'Brilliant', 'Focus'];
             const randomAdjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-            const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
             const randomNumber = Math.floor(Math.random() * 1000);
-            return `${randomAdjective} ${randomNoun} ${randomNumber}`;
+            return `${randomAdjective} ${type} ${randomNumber}`;
         }
-
+        
         // --- AUTHENTICATION FUNCTIONS ---
         function registerUser() {
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
-
-            if (!email || !password) {
-                showError('auth-error', 'Please fill in all fields');
-                return;
-            }
-
-            if (password.length < 6) {
-                showError('auth-error', 'Password must be at least 6 characters');
-                return;
-            }
-
+            if (!email || !password) return showError('auth-error', 'Please fill in all fields');
+            if (password.length < 6) return showError('auth-error', 'Password must be at least 6 characters');
+            
             registerBtn.innerHTML = '<div class="loading-spinner"></div>';
             registerBtn.disabled = true;
-
             auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    showSuccess('auth-success', 'Account created successfully!');
-                })
-                .catch((error) => {
-                    showError('auth-error', error.message);
-                })
+                .then(() => showSuccess('auth-success', 'Account created successfully!'))
+                .catch(error => showError('auth-error', error.message))
                 .finally(() => {
                     registerBtn.innerHTML = 'Register';
                     registerBtn.disabled = false;
@@ -989,22 +603,13 @@
         function loginUser() {
             const email = emailInput.value.trim();
             const password = passwordInput.value.trim();
-
-            if (!email || !password) {
-                showError('auth-error', 'Please fill in all fields');
-                return;
-            }
+            if (!email || !password) return showError('auth-error', 'Please fill in all fields');
 
             loginBtn.innerHTML = '<div class="loading-spinner"></div>';
             loginBtn.disabled = true;
-
             auth.signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    showSuccess('auth-success', 'Logged in successfully!');
-                })
-                .catch((error) => {
-                    showError('auth-error', error.message);
-                })
+                .then(() => showSuccess('auth-success', 'Logged in successfully!'))
+                .catch(error => showError('auth-error', error.message))
                 .finally(() => {
                     loginBtn.innerHTML = 'Login';
                     loginBtn.disabled = false;
@@ -1012,19 +617,12 @@
         }
 
         function logoutUser() {
-            auth.signOut()
-                .then(() => {
-                    showSuccess('auth-success', 'Logged out successfully!');
-                })
-                .catch((error) => {
-                    showError('auth-error', error.message);
-                });
+            auth.signOut().catch(error => showError('auth-error', error.message));
         }
-
+        
         // --- STUDY LOG FUNCTIONS ---
         async function saveStudyLog(event) {
             event.preventDefault();
-
             if (!currentUser) return;
 
             const subject = subjectInput.value.trim();
@@ -1032,59 +630,51 @@
             const duration = parseInt(durationInput.value);
             const notes = notesInput.value.trim();
 
-            if (!subject || !chapter || !duration) {
-                showError('dashboard-error', 'Please fill in all required fields');
-                return;
-            }
+            if (!subject || !chapter || !duration) return showError('dashboard-error', 'Please fill in all required fields');
 
             try {
-                const studyData = {
+                await db.collection('study_logs').add({
                     userId: currentUser.uid,
-                    subject: subject,
-                    chapter: chapter,
-                    duration: duration,
-                    notes: notes,
+                    userName: currentUser.email,
+                    subject, chapter, duration, notes,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                };
-
-                await db.collection('study_logs').add(studyData);
-                
+                });
                 showSuccess('dashboard-success', 'Study log saved successfully!');
                 studyForm.reset();
-                
             } catch (error) {
                 console.error('Error saving study log:', error);
-                showError('dashboard-error', 'Failed to save study log. Please try again.');
+                showError('dashboard-error', 'Failed to save study log.');
             }
         }
 
         function loadStudyLogs() {
             if (!currentUser) return;
-
             db.collection('study_logs')
                 .where('userId', '==', currentUser.uid)
                 .orderBy('timestamp', 'desc')
-                .onSnapshot((snapshot) => {
+                .onSnapshot(snapshot => {
                     logsContainer.innerHTML = '';
-                    
                     if (snapshot.empty) {
-                        logsContainer.innerHTML = '<p style="text-align: center; color: rgba(224, 224, 224, 0.6); padding: 20px;">No study logs yet. Start tracking your study sessions!</p>';
+                        logsContainer.innerHTML = '<p style="text-align: center; color: rgba(224, 224, 224, 0.6);">No study logs yet.</p>';
                         return;
                     }
-
-                    snapshot.forEach((doc) => {
-                        const log = doc.data();
-                        const logElement = createLogElement(log);
-                        logsContainer.appendChild(logElement);
+                    snapshot.forEach(doc => {
+                        logsContainer.appendChild(createLogElement(doc.data()));
                     });
-                });
+                }, error => console.error("Error loading study logs: ", error));
         }
 
-        function createLogElement(log) {
+        function createLogElement(log, showAuthor = false) {
             const logDiv = document.createElement('div');
             logDiv.className = 'log-item';
             
+            let authorHtml = '';
+            if (showAuthor) {
+                authorHtml = `<div class="log-item-author">${log.userName}</div>`;
+            }
+            
             logDiv.innerHTML = `
+                ${authorHtml}
                 <div class="log-header">
                     <div class="log-subject">${log.subject}</div>
                     <div class="log-duration">${log.duration} min</div>
@@ -1093,270 +683,209 @@
                 ${log.notes ? `<div class="log-note">${log.notes}</div>` : ''}
                 <div class="log-timestamp">${formatTimestamp(log.timestamp)}</div>
             `;
-            
             return logDiv;
         }
 
-        // --- GROUP FUNCTIONS ---
-        async function createGroup() {
+        // --- GENERIC GROUP FUNCTIONS ---
+        async function createGroup(collectionName, successMessage, errorMessage, type) {
             if (!currentUser) return;
-
             try {
-                const groupName = generateGroupName();
-                const groupData = {
+                const groupName = generateGroupName(type);
+                await db.collection(collectionName).add({
                     name: groupName,
                     members: [currentUser.uid],
                     memberNames: [currentUser.email],
                     createdBy: currentUser.uid,
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                };
-
-                await db.collection('groups').add(groupData);
-                showSuccess('groups-success', `Group "${groupName}" created successfully!`);
-                
+                });
+                showSuccess(successMessage, `Group "${groupName}" created!`);
             } catch (error) {
-                console.error('Error creating group:', error);
-                showError('groups-error', 'Failed to create group. Please try again.');
+                console.error(`Error creating ${type} group:`, error);
+                showError(errorMessage, `Failed to create group.`);
             }
         }
 
-        async function inviteToGroup() {
-            const inviteUid = inviteUidInput.value.trim();
-            
-            if (!inviteUid) {
-                showError('groups-error', 'Please enter a valid UID');
-                return;
-            }
-
-            if (inviteUid === currentUser.uid) {
-                showError('groups-error', 'You cannot invite yourself');
-                return;
-            }
+        async function inviteToGroup(collectionName, inviteUid, successMessage, errorMessage, type) {
+            if (!inviteUid) return showError(errorMessage, 'Please enter a valid UID');
+            if (inviteUid === currentUser.uid) return showError(errorMessage, 'You cannot invite yourself');
 
             try {
                 const userDoc = await db.collection('users').doc(inviteUid).get();
-                if (!userDoc.exists) {
-                    showError('groups-error', 'User not found with this UID');
-                    return;
-                }
+                if (!userDoc.exists) return showError(errorMessage, 'User not found with this UID');
 
-                const groupsSnapshot = await db.collection('groups')
+                const groupsSnapshot = await db.collection(collectionName)
                     .where('members', 'array-contains', currentUser.uid)
+                    .orderBy('createdAt', 'desc')
                     .limit(1)
                     .get();
 
-                if (groupsSnapshot.empty) {
-                    showError('groups-error', 'Please create a group first');
-                    return;
-                }
+                if (groupsSnapshot.empty) return showError(errorMessage, `Please create a ${type} group first`);
 
                 const groupDoc = groupsSnapshot.docs[0];
-                const groupData = groupDoc.data();
-
-                if (groupData.members.includes(inviteUid)) {
-                    showError('groups-error', 'User is already in this group');
-                    return;
-                }
+                if (groupDoc.data().members.includes(inviteUid)) return showError(errorMessage, 'User is already in this group');
 
                 await groupDoc.ref.update({
                     members: firebase.firestore.FieldValue.arrayUnion(inviteUid),
                     memberNames: firebase.firestore.FieldValue.arrayUnion(userDoc.data().email)
                 });
-
-                showSuccess('groups-success', 'User invited successfully!');
-                inviteUidInput.value = '';
-                
+                showSuccess(successMessage, 'User invited successfully!');
             } catch (error) {
-                console.error('Error inviting user:', error);
-                showError('groups-error', 'Failed to invite user. Please try again.');
+                console.error(`Error inviting to ${type} group:`, error);
+                showError(errorMessage, 'Failed to invite user.');
             }
         }
 
-        function loadGroups() {
+        function loadGroups(collectionName, listElement, openFunction, type) {
             if (!currentUser) return;
-
-            db.collection('groups')
+            db.collection(collectionName)
                 .where('members', 'array-contains', currentUser.uid)
-                .onSnapshot((snapshot) => {
-                    groupsList.innerHTML = '';
-                    
+                .onSnapshot(snapshot => {
+                    listElement.innerHTML = '';
                     if (snapshot.empty) {
-                        groupsList.innerHTML = '<p style="text-align: center; color: rgba(224, 224, 224, 0.6); padding: 20px;">No groups yet. Create one to start collaborating!</p>';
+                        listElement.innerHTML = `<p style="text-align: center; color: rgba(224, 224, 224, 0.6);">No ${type} groups yet.</p>`;
                         return;
                     }
-
-                    snapshot.forEach((doc) => {
+                    snapshot.forEach(doc => {
                         const group = doc.data();
-                        const groupElement = createGroupElement(doc.id, group);
-                        groupsList.appendChild(groupElement);
+                        const groupElement = document.createElement('div');
+                        groupElement.className = 'group-item';
+                        groupElement.onclick = () => openFunction(doc.id, group);
+                        groupElement.innerHTML = `<div class="group-name">${group.name}</div><div class="group-members">${group.members.length} member(s)</div>`;
+                        listElement.appendChild(groupElement);
                     });
                 });
         }
 
-        function createGroupElement(groupId, group) {
-            const groupDiv = document.createElement('div');
-            groupDiv.className = 'group-item';
-            groupDiv.onclick = () => openChat(groupId, group.name);
-            
-            groupDiv.innerHTML = `
-                <div class="group-name">${group.name}</div>
-                <div class="group-members">${group.members.length} member(s)</div>
-            `;
-            
-            return groupDiv;
-        }
-
-        // --- CHAT FUNCTIONS ---
-        function openChat(groupId, groupName) {
-            currentGroupId = groupId;
-            chatGroupName.textContent = groupName;
+        // --- CHAT GROUP SPECIFIC FUNCTIONS ---
+        function openChat(groupId, group) {
+            currentChatGroupId = groupId;
+            chatGroupName.textContent = group.name;
+            developerCredit.classList.add('hidden');
             chatView.classList.remove('hidden');
             loadChatMessages();
         }
 
         function closeChat() {
             chatView.classList.add('hidden');
-            currentGroupId = null;
-            if (chatUnsubscribe) {
-                chatUnsubscribe();
-                chatUnsubscribe = null;
-            }
+            developerCredit.classList.remove('hidden');
+            if (chatUnsubscribe) chatUnsubscribe();
+            currentChatGroupId = null;
         }
 
         function loadChatMessages() {
-            if (!currentGroupId) return;
-
-            if (chatUnsubscribe) {
-                chatUnsubscribe();
-            }
-
-            chatUnsubscribe = db.collection('groups')
-                .doc(currentGroupId)
-                .collection('messages')
-                .orderBy('timestamp', 'asc')
-                .onSnapshot((snapshot) => {
+            if (chatUnsubscribe) chatUnsubscribe();
+            chatUnsubscribe = db.collection('chat_groups').doc(currentChatGroupId).collection('messages').orderBy('timestamp', 'asc')
+                .onSnapshot(snapshot => {
                     chatMessages.innerHTML = '';
-                    
-                    snapshot.forEach((doc) => {
-                        const message = doc.data();
-                        const messageElement = createMessageElement(doc.id, message);
-                        chatMessages.appendChild(messageElement);
-                    });
-                    
+                    snapshot.forEach(doc => chatMessages.appendChild(createMessageElement(doc.id, doc.data())));
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 });
         }
-
+        
         function createMessageElement(messageId, message) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${message.senderId === currentUser.uid ? 'own' : 'other'}`;
-            
             const isOwn = message.senderId === currentUser.uid;
-            
             messageDiv.innerHTML = `
                 ${!isOwn ? `<div class="message-sender">${message.senderName}</div>` : ''}
                 <div class="message-content">${message.content}</div>
                 <div class="message-time">${formatTimestamp(message.timestamp)}</div>
                 ${isOwn ? `<button class="message-delete" onclick="deleteMessage('${messageId}')">×</button>` : ''}
             `;
-            
             return messageDiv;
         }
 
         async function sendMessage(event) {
             event.preventDefault();
-            
-            if (!currentGroupId || !currentUser) return;
-            
             const content = chatInput.value.trim();
-            if (!content) return;
-
-            try {
-                const messageData = {
-                    content: content,
-                    senderId: currentUser.uid,
-                    senderName: currentUser.email,
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                };
-
-                await db.collection('groups')
-                    .doc(currentGroupId)
-                    .collection('messages')
-                    .add(messageData);
-
-                chatInput.value = '';
-                
-            } catch (error) {
-                console.error('Error sending message:', error);
-                alert('Failed to send message. Please try again.');
-            }
+            if (!content || !currentChatGroupId) return;
+            chatInput.value = '';
+            await db.collection('chat_groups').doc(currentChatGroupId).collection('messages').add({
+                content,
+                senderId: currentUser.uid,
+                senderName: currentUser.email,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
         }
 
         async function deleteMessage(messageId) {
-            if (!currentGroupId) return;
-
-            try {
-                await db.collection('groups')
-                    .doc(currentGroupId)
-                    .collection('messages')
-                    .doc(messageId)
-                    .delete();
-                    
-            } catch (error) {
-                console.error('Error deleting message:', error);
-                alert('Failed to delete message. Please try again.');
-            }
+            if (!currentChatGroupId) return;
+            await db.collection('chat_groups').doc(currentChatGroupId).collection('messages').doc(messageId).delete();
         }
-        
-        // --- USER PROFILE FUNCTIONS ---
-        async function setupUserProfile(user) {
-            try {
-                const userDoc = await db.collection('users').doc(user.uid).get();
-                
-                if (!userDoc.exists) {
-                    await db.collection('users').doc(user.uid).set({
-                        email: user.email,
-                        uid: user.uid,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+        // --- LOG GROUP SPECIFIC FUNCTIONS ---
+        function openGroupLogView(groupId, group) {
+            currentLogGroupId = groupId;
+            groupLogName.textContent = group.name;
+            developerCredit.classList.add('hidden');
+            groupLogView.classList.remove('hidden');
+            loadGroupLogMessages(group.members);
+        }
+
+        function closeGroupLogView() {
+            groupLogView.classList.add('hidden');
+            developerCredit.classList.remove('hidden');
+            if (groupLogUnsubscribe) groupLogUnsubscribe();
+            currentLogGroupId = null;
+        }
+
+        function loadGroupLogMessages(memberIds) {
+            if (groupLogUnsubscribe) groupLogUnsubscribe();
+            groupLogUnsubscribe = db.collection('study_logs')
+                .where('userId', 'in', memberIds)
+                .orderBy('timestamp', 'desc')
+                .onSnapshot(snapshot => {
+                    groupLogMessages.innerHTML = '';
+                    if (snapshot.empty) {
+                        groupLogMessages.innerHTML = '<p style="text-align: center; color: rgba(224, 224, 224, 0.6);">No study logs in this group yet.</p>';
+                        return;
+                    }
+                    snapshot.forEach(doc => {
+                        groupLogMessages.appendChild(createLogElement(doc.data(), true)); // Show author
                     });
-                }
-            } catch (error) {
-                console.error('Error setting up user profile:', error);
+                });
+        }
+
+        // --- USER PROFILE ---
+        async function setupUserProfile(user) {
+            const userRef = db.collection('users').doc(user.uid);
+            const userDoc = await userRef.get();
+            if (!userDoc.exists) {
+                await userRef.set({
+                    email: user.email,
+                    uid: user.uid,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
             }
         }
 
         // --- EVENT LISTENERS ---
-        
-        // Authentication events
         loginBtn.addEventListener('click', loginUser);
         registerBtn.addEventListener('click', registerUser);
         logoutBtn.addEventListener('click', logoutUser);
-
-        // Study form events
         studyForm.addEventListener('submit', saveStudyLog);
+        
+        createGroupBtn.addEventListener('click', () => createGroup('chat_groups', 'groups-success', 'groups-error', 'Chat'));
+        inviteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            inviteToGroup('chat_groups', inviteUidInput.value.trim(), 'groups-success', 'groups-error', 'Chat');
+            inviteUidInput.value = '';
+        });
 
-        // Groups events
-        createGroupBtn.addEventListener('click', createGroup);
-        inviteBtn.addEventListener('click', inviteToGroup);
+        createGroupLogBtn.addEventListener('click', () => createGroup('log_groups', 'group-logs-success', 'group-logs-error', 'Log'));
+        inviteLogForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            inviteToGroup('log_groups', inviteLogUidInput.value.trim(), 'group-logs-success', 'group-logs-error', 'Log');
+            inviteLogUidInput.value = '';
+        });
 
-        // Chat events
         chatForm.addEventListener('submit', sendMessage);
         closeChatBtn.addEventListener('click', closeChat);
+        closeGroupLogBtn.addEventListener('click', closeGroupLogView);
 
-        // Developer credit events
-        developerCredit.addEventListener('click', () => {
-            developerModal.classList.remove('hidden');
-        });
-
-        closeDeveloperModal.addEventListener('click', () => {
-            developerModal.classList.add('hidden');
-        });
-
-        developerModal.addEventListener('click', (e) => {
-            if (e.target === developerModal) {
-                developerModal.classList.add('hidden');
-            }
-        });
+        developerCredit.addEventListener('click', () => developerModal.classList.remove('hidden'));
+        closeDeveloperModal.addEventListener('click', () => developerModal.classList.add('hidden'));
+        developerModal.addEventListener('click', (e) => { if (e.target === developerModal) developerModal.classList.add('hidden'); });
 
         // --- FIREBASE AUTH STATE LISTENER ---
         auth.onAuthStateChanged(async (user) => {
@@ -1371,33 +900,27 @@
                 mainView.classList.remove('hidden');
                 
                 loadStudyLogs();
-                loadGroups();
-                
+                loadGroups('chat_groups', groupsList, openChat, 'Chat');
+                loadGroups('log_groups', groupLogsList, openGroupLogView, 'Log');
             } else {
                 currentUser = null;
-                
                 mainView.classList.add('hidden');
                 chatView.classList.add('hidden');
+                groupLogView.classList.add('hidden');
                 authView.classList.remove('hidden');
-                
-                emailInput.value = '';
-                passwordInput.value = '';
             }
         });
 
         // --- KEYBOARD SHORTCUTS ---
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                if (!chatView.classList.contains('hidden')) {
-                    closeChat();
-                } else if (!developerModal.classList.contains('hidden')) {
-                    developerModal.classList.add('hidden');
-                }
+                if (!chatView.classList.contains('hidden')) closeChat();
+                else if (!groupLogView.classList.contains('hidden')) closeGroupLogView();
+                else if (!developerModal.classList.contains('hidden')) developerModal.classList.add('hidden');
             }
         });
 
-        // --- INITIALIZE APP ---
-        console.log('TAPS - Student Study & Collaboration App initialized');
+        console.log('TAPS App initialized');
     </script>
 </body>
 </html>
